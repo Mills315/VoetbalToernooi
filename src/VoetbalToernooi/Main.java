@@ -27,7 +27,7 @@ public class Main {
 
     private static void printTeams(List<VoetbalTeam> teams) {
         for (VoetbalTeam team : teams) {
-            System.out.println("Team " + team.deelnemer + ", ook wel bekend als Team '" + team.naam + "', is klaar om deel te nemen aan het toernooi.");
+            System.out.println("Team " + team.deelnemer + ", met een sterkte van " + team.speelsterkte + "; ook wel bekend als Team '" + team.naam + "', is klaar om deel te nemen aan het toernooi.");
         }
     }
 }

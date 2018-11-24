@@ -7,7 +7,7 @@ public class ProTeam extends VoetbalTeam {
     protected ProTeam(String naam, String sponsor, char deelnemer) {
         super(naam, sponsor);
         Random willekeur = new Random();
-        int n = willekeur.nextInt(100) + 50;
+        int n = willekeur.nextInt(50) + 50;
         this.speelsterkte = n;
         this.deelnemer = deelnemer;
     }
