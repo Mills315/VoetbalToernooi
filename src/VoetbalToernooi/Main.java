@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         List<VoetbalTeam> teams = getTeams();
+        printTeams(teams);
 
     }
 
@@ -24,7 +25,7 @@ public class Main {
         return teams;
     }
 
-    private static void printAnimals(List<VoetbalTeam> teams) {
+    private static void printTeams(List<VoetbalTeam> teams) {
         for (VoetbalTeam team : teams) {
             System.out.println("Team " + team.deelnemer + ", ook wel bekend als Team '" + team.naam + "', is klaar om deel te nemen aan het toernooi.");
         }
