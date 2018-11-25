@@ -108,31 +108,31 @@ public class Main {
         List<VoetbalTeam> winnaarsRonde1 = new ArrayList<>();
         if(teams.get(0).speelsterkte + teams.get(0).fitheid > teams.get(1).speelsterkte + teams.get(1).fitheid ){
            winnaarsRonde1.add(teams.get(0));
-            System.out.println(winnaarsRonde1.get(0) + " wint!");
+            System.out.println(winnaarsRonde1.get(0).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(1));
-            System.out.println(winnaarsRonde1.get(0) + " wint!");
+            System.out.println(winnaarsRonde1.get(0).naam + " wint!");
         }
         if(teams.get(2).speelsterkte + teams.get(2).fitheid > teams.get(3).speelsterkte + teams.get(3).fitheid ){
             winnaarsRonde1.add(teams.get(2));
-            System.out.println(winnaarsRonde1.get(1) + " wint!");
+            System.out.println(winnaarsRonde1.get(1).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(3));
-            System.out.println(winnaarsRonde1.get(1) + " wint!");
+            System.out.println(winnaarsRonde1.get(1).naam + " wint!");
         }
         if(teams.get(4).speelsterkte + teams.get(4).fitheid > teams.get(5).speelsterkte + teams.get(5).fitheid ){
             winnaarsRonde1.add(teams.get(4));
-            System.out.println(winnaarsRonde1.get(2) + " wint!");
+            System.out.println(winnaarsRonde1.get(2).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(5));
-            System.out.println(winnaarsRonde1.get(2) + " wint!");
+            System.out.println(winnaarsRonde1.get(2).naam + " wint!");
         }
         if(teams.get(6).speelsterkte + teams.get(6).fitheid > teams.get(7).speelsterkte + teams.get(7).fitheid ){
             winnaarsRonde1.add(teams.get(6));
-            System.out.println(winnaarsRonde1.get(3) + " wint!");
+            System.out.println(winnaarsRonde1.get(3).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(7));
-            System.out.println(winnaarsRonde1.get(3) + " wint!");
+            System.out.println(winnaarsRonde1.get(3).naam + " wint!");
         }
 
     }
