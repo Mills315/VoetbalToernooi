@@ -7,10 +7,12 @@ public class VoetbalTeam {
     protected String mascotte;
     protected int speelsterkte;
     protected char deelnemer;
+    protected int fitheid;
 
     protected VoetbalTeam(String naam, String sponsor) {
         this.naam = naam;
         this.sponsor = sponsor;
+        int fitheid = 0;
     }
 
     public String getNaam() {
@@ -32,4 +34,14 @@ public class VoetbalTeam {
     public char deelnemer() {
         return deelnemer;
     }
+
+    public void setFitheid(int fitheid) {
+        this.fitheid = fitheid;
+    }
+
+    public int fitheid() {
+        return fitheid;
+    }
+
+
 }

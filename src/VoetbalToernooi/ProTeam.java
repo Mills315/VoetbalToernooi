@@ -10,6 +10,7 @@ public class ProTeam extends VoetbalTeam {
         int n = willekeur.nextInt(50) + 50;
         this.speelsterkte = n;
         this.deelnemer = deelnemer;
+        int fitheid = 0;
     }
 
     public String getNaam() {
@@ -26,5 +27,9 @@ public class ProTeam extends VoetbalTeam {
 
     public char deelnemer() {
         return deelnemer;
+    }
+
+    public void setFitheid(int fitheid) {
+        this.fitheid = fitheid;
     }
 }
