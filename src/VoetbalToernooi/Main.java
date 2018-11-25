@@ -75,10 +75,16 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        FinaleSpelen(winnaarsRonde2);
+        List<VoetbalTeam> winnaar = FinaleSpelen(winnaarsRonde2);
         System.out.println();
 
-        
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        Nabeschouwing(winnaar);
     }
 
     // in de volgende methode worden de teams gemaakt
@@ -235,12 +241,12 @@ public class Main {
         for (VoetbalTeam team : winnaarsRonde2) {
             if (winnaarsRonde2 instanceof AmateurTeam) {
                 Random willekeur = new Random();
-                int n = willekeur.nextInt(60 + 1);
+                int n = willekeur.nextInt(75 + 1);
                 team.setFitheid(n);
             }
             if (winnaarsRonde2 instanceof ProTeam) {
                 Random willekeur = new Random();
-                int n = willekeur.nextInt(20) + 1;
+                int n = willekeur.nextInt(30) + 1;
                 team.setFitheid(n);
             }
         }
@@ -259,6 +265,14 @@ public class Main {
     }
 
 
+
+    private static void Nabeschouwing(List<VoetbalTeam> winnaar){
+        if(winnaar.get(0) instanceof ProTeam){
+            System.out.println("De sponsor van " + winnaar.get(0).naam + ", " + ((ProTeam) winnaar.get(0)).getSponsor() + ", geeft aan verheugd te zijn met deze uitkomst." );
+        } else {
+            System.out.println("De mascotte van " + winnaar.get(0).naam + ", " + ((AmateurTeam) winnaar.get(0)).getMascotte() + ", werd dronken aangetroffen achter de stamkroeg van het team" );
+        }   // Casting redundant maar voor de duidelijkheid.
+    }
 
 
 
