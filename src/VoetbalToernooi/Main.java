@@ -77,6 +77,8 @@ public class Main {
 
         FinaleSpelen(winnaarsRonde2);
         System.out.println();
+
+        
     }
 
     // in de volgende methode worden de teams gemaakt
