@@ -2,6 +2,7 @@ package VoetbalToernooi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class Main {
 
@@ -15,8 +16,7 @@ public class Main {
         // zo kan een amateurteam van een proteam winnen. maar niet vaak.
         // sterkte kan ook naar een percentage scoren omgezet worden.. bijv scoren = 50% betekent dat ze 50% kans hebben om 1 goal te scoren, 50%*50% voor 2 goals, et cetera
 
-
-        
+        Ronde1(teams);
 
     }
 
@@ -38,5 +38,21 @@ public class Main {
             System.out.println("Team " + team.deelnemer + ", met een sterkte van " + team.speelsterkte + "; ook wel bekend als Team '" + team.naam + "', is klaar om deel te nemen aan het toernooi.");
         }
     }
+
+    private static void Ronde1(List<VoetbalTeam> teams) {
+        Collections.shuffle(teams);
+        System.out.println("In ronde 1 spelen de volgende teams tegen elkaar:");
+        System.out.println();
+        System.out.print(teams.get(0).naam + " speelt tegen " + teams.get(1).naam + ".");
+        System.out.println();
+        System.out.print(teams.get(2).naam + " speelt tegen " + teams.get(3).naam + ".");
+        System.out.println();
+        System.out.print(teams.get(4).naam + " speelt tegen " + teams.get(5).naam + ".");
+        System.out.println();
+        System.out.print(teams.get(6).naam + " speelt tegen " + teams.get(7).naam + ".");
+        System.out.println();
+    }
+
+
 }
 
