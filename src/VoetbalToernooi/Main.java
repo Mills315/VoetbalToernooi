@@ -21,68 +21,40 @@ public class Main {
         printTeams(teams);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         Ronde1Shuffle(teams);
         Ronde1Fitheid(teams);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         List<VoetbalTeam> winnaarsRonde1 = Ronde1Spelen(teams);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         Ronde2Shuffle(winnaarsRonde1);
         Ronde2Fitheid(winnaarsRonde1);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         List<VoetbalTeam> winnaarsRonde2 = Ronde2Spelen(winnaarsRonde1);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         FinaleShuffle(winnaarsRonde2);
         FinaleFitheid(winnaarsRonde2);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         List<VoetbalTeam> winnaar = FinaleSpelen(winnaarsRonde2);
         System.out.println();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause();
 
         Nabeschouwing(winnaar);
     }
@@ -265,18 +237,21 @@ public class Main {
     }
 
 
-
-    private static void Nabeschouwing(List<VoetbalTeam> winnaar){
-        if(winnaar.get(0) instanceof ProTeam){
-            System.out.println("De sponsor van " + winnaar.get(0).naam + ", " + ((ProTeam) winnaar.get(0)).getSponsor() + ", geeft aan verheugd te zijn met deze uitkomst." );
+    private static void Nabeschouwing(List<VoetbalTeam> winnaar) {
+        if (winnaar.get(0) instanceof ProTeam) {
+            System.out.println("De sponsor van " + winnaar.get(0).naam + ", " + ((ProTeam) winnaar.get(0)).getSponsor() + ", geeft aan verheugd te zijn met deze uitkomst.");
         } else {
-            System.out.println("De mascotte van " + winnaar.get(0).naam + ", " + ((AmateurTeam) winnaar.get(0)).getMascotte() + ", werd dronken aangetroffen achter de stamkroeg van het team" );
+            System.out.println("De mascotte van " + winnaar.get(0).naam + ", " + ((AmateurTeam) winnaar.get(0)).getMascotte() + ", werd dronken aangetroffen achter de stamkroeg van het team");
         }   // Casting redundant maar voor de duidelijkheid.
     }
 
-
-
-
+    private static void pause() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }
