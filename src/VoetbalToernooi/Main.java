@@ -19,6 +19,7 @@ public class Main {
 
         List<VoetbalTeam> teams = getTeams();
         printTeams(teams);
+        System.out.println();
 
         try {
             Thread.sleep(4000);
@@ -28,7 +29,7 @@ public class Main {
 
         Ronde1Shuffle(teams);
         Ronde1Fitheid(teams);
-        Ronde1Spelen(teams);
+        System.out.println();
 
         try {
             Thread.sleep(4000);
@@ -36,8 +37,46 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        List<VoetbalTeam> winnaarsRonde1 = Ronde1Spelen(teams);
+        System.out.println();
 
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
+        Ronde2Shuffle(winnaarsRonde1);
+        Ronde2Fitheid(winnaarsRonde1);
+        System.out.println();
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        List<VoetbalTeam> winnaarsRonde2 = Ronde2Spelen(winnaarsRonde1);
+        System.out.println();
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        FinaleShuffle(winnaarsRonde2);
+        FinaleFitheid(winnaarsRonde2);
+        System.out.println();
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        FinaleSpelen(winnaarsRonde2);
+        System.out.println();
     }
 
     // in de volgende methode worden de teams gemaakt
@@ -104,37 +143,125 @@ public class Main {
 
     // bedenk wat voor gelijkspel!
 
-    private static void Ronde1Spelen(List<VoetbalTeam> teams) {
+    private static List<VoetbalTeam> Ronde1Spelen(List<VoetbalTeam> teams) {
         List<VoetbalTeam> winnaarsRonde1 = new ArrayList<>();
-        if(teams.get(0).speelsterkte + teams.get(0).fitheid > teams.get(1).speelsterkte + teams.get(1).fitheid ){
-           winnaarsRonde1.add(teams.get(0));
+        if (teams.get(0).speelsterkte + teams.get(0).fitheid > teams.get(1).speelsterkte + teams.get(1).fitheid) {
+            winnaarsRonde1.add(teams.get(0));
             System.out.println(winnaarsRonde1.get(0).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(1));
             System.out.println(winnaarsRonde1.get(0).naam + " wint!");
         }
-        if(teams.get(2).speelsterkte + teams.get(2).fitheid > teams.get(3).speelsterkte + teams.get(3).fitheid ){
+        if (teams.get(2).speelsterkte + teams.get(2).fitheid > teams.get(3).speelsterkte + teams.get(3).fitheid) {
             winnaarsRonde1.add(teams.get(2));
             System.out.println(winnaarsRonde1.get(1).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(3));
             System.out.println(winnaarsRonde1.get(1).naam + " wint!");
         }
-        if(teams.get(4).speelsterkte + teams.get(4).fitheid > teams.get(5).speelsterkte + teams.get(5).fitheid ){
+        if (teams.get(4).speelsterkte + teams.get(4).fitheid > teams.get(5).speelsterkte + teams.get(5).fitheid) {
             winnaarsRonde1.add(teams.get(4));
             System.out.println(winnaarsRonde1.get(2).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(5));
             System.out.println(winnaarsRonde1.get(2).naam + " wint!");
         }
-        if(teams.get(6).speelsterkte + teams.get(6).fitheid > teams.get(7).speelsterkte + teams.get(7).fitheid ){
+        if (teams.get(6).speelsterkte + teams.get(6).fitheid > teams.get(7).speelsterkte + teams.get(7).fitheid) {
             winnaarsRonde1.add(teams.get(6));
             System.out.println(winnaarsRonde1.get(3).naam + " wint!");
         } else {
             winnaarsRonde1.add(teams.get(7));
             System.out.println(winnaarsRonde1.get(3).naam + " wint!");
         }
-
+        return winnaarsRonde1;
     }
+
+    // ronde twee starten met lijst van winnaars. weer shufflen? waarom niet. nieuwe random fitheid, om het spannend te houden. speelsterkte blijft wel hetzelfde.
+
+    private static void Ronde2Shuffle(List<VoetbalTeam> winnaarsRonde1) {
+        Collections.shuffle(winnaarsRonde1);
+        System.out.println("In ronde 2 spelen de volgende teams tegen elkaar:");
+        System.out.println();
+        System.out.print(winnaarsRonde1.get(0).naam + " speelt tegen " + winnaarsRonde1.get(1).naam + ".");
+        System.out.println();
+        System.out.print(winnaarsRonde1.get(2).naam + " speelt tegen " + winnaarsRonde1.get(3).naam + ".");
+        System.out.println();
+    }
+
+    private static void Ronde2Fitheid(List<VoetbalTeam> winnaarsRonde1) {
+        for (VoetbalTeam team : winnaarsRonde1) {
+            if (winnaarsRonde1 instanceof AmateurTeam) {
+                Random willekeur = new Random();
+                int n = willekeur.nextInt(50 + 1);
+                team.setFitheid(n);
+            }
+            if (winnaarsRonde1 instanceof ProTeam) {
+                Random willekeur = new Random();
+                int n = willekeur.nextInt(20) + 1;
+                team.setFitheid(n);
+            }
+        }
+    }
+
+    private static List<VoetbalTeam> Ronde2Spelen(List<VoetbalTeam> winnaarsRonde1) {
+        List<VoetbalTeam> winnaarsRonde2 = new ArrayList<>();
+        if (winnaarsRonde1.get(0).speelsterkte + winnaarsRonde1.get(0).fitheid > winnaarsRonde1.get(1).speelsterkte + winnaarsRonde1.get(1).fitheid) {
+            winnaarsRonde2.add(winnaarsRonde1.get(0));
+            System.out.println(winnaarsRonde2.get(0).naam + " wint!");
+        } else {
+            winnaarsRonde2.add(winnaarsRonde1.get(1));
+            System.out.println(winnaarsRonde2.get(0).naam + " wint!");
+        }
+        if (winnaarsRonde1.get(2).speelsterkte + winnaarsRonde1.get(2).fitheid > winnaarsRonde1.get(3).speelsterkte + winnaarsRonde1.get(3).fitheid) {
+            winnaarsRonde2.add(winnaarsRonde1.get(2));
+            System.out.println(winnaarsRonde2.get(1).naam + " wint!");
+        } else {
+            winnaarsRonde2.add(winnaarsRonde1.get(3));
+            System.out.println(winnaarsRonde2.get(1).naam + " wint!");
+        }
+        return winnaarsRonde2;
+    }
+
+    private static void FinaleShuffle(List<VoetbalTeam> winnaarsRonde2) {
+        System.out.println("In de finale spelen de volgende teams tegen elkaar:");
+        System.out.println();
+        System.out.print(winnaarsRonde2.get(0).naam + " speelt tegen " + winnaarsRonde2.get(1).naam + ".");
+        System.out.println();
+    }
+
+    private static void FinaleFitheid(List<VoetbalTeam> winnaarsRonde2) {
+        for (VoetbalTeam team : winnaarsRonde2) {
+            if (winnaarsRonde2 instanceof AmateurTeam) {
+                Random willekeur = new Random();
+                int n = willekeur.nextInt(60 + 1);
+                team.setFitheid(n);
+            }
+            if (winnaarsRonde2 instanceof ProTeam) {
+                Random willekeur = new Random();
+                int n = willekeur.nextInt(20) + 1;
+                team.setFitheid(n);
+            }
+        }
+    }
+
+    private static List<VoetbalTeam> FinaleSpelen(List<VoetbalTeam> winnaarsRonde2) {
+        List<VoetbalTeam> winnaar = new ArrayList<>();
+        if (winnaarsRonde2.get(0).speelsterkte + winnaarsRonde2.get(0).fitheid > winnaarsRonde2.get(1).speelsterkte + winnaarsRonde2.get(1).fitheid) {
+            winnaar.add(winnaarsRonde2.get(0));
+            System.out.println(winnaar.get(0).naam + " wint de FINALE!!!!");
+        } else {
+            winnaar.add(winnaarsRonde2.get(1));
+            System.out.println(winnaar.get(0).naam + " wint de FINALE!!!!");
+        }
+        return winnaar;
+    }
+
+
+
+
+
+
+
+
 }
 
