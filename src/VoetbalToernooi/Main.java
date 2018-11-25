@@ -16,9 +16,21 @@ public class Main {
         // zo kan een amateurteam van een proteam winnen. maar niet vaak.
         // sterkte kan ook naar een percentage scoren omgezet worden.. bijv scoren = 50% betekent dat ze 50% kans hebben om 1 goal te scoren, 50%*50% voor 2 goals, et cetera
 
-        Ronde1(teams);
+        Ronde1Shuffle(teams);
+
+        // maak een 10 sec delay. Tussen elke ronde doen, anders is het toernooi binnen no time over ... ;p
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
     }
+
+    // in de volgende methode worden de teams gemaakt
 
     private static List<VoetbalTeam> getTeams() {
         List<VoetbalTeam> teams = new ArrayList<>();
@@ -33,13 +45,17 @@ public class Main {
         return teams;
     }
 
+    // in de volgende methode worden de gemaakte teams geprint
+
     private static void printTeams(List<VoetbalTeam> teams) {
         for (VoetbalTeam team : teams) {
             System.out.println("Team " + team.deelnemer + ", met een sterkte van " + team.speelsterkte + "; ook wel bekend als Team '" + team.naam + "', is klaar om deel te nemen aan het toernooi.");
         }
     }
 
-    private static void Ronde1(List<VoetbalTeam> teams) {
+    // dit is de methode voor ronde 1; eerst een shuffle, dan 'spelen'
+
+    private static void Ronde1Shuffle(List<VoetbalTeam> teams) {
         Collections.shuffle(teams);
         System.out.println("In ronde 1 spelen de volgende teams tegen elkaar:");
         System.out.println();
@@ -51,8 +67,12 @@ public class Main {
         System.out.println();
         System.out.print(teams.get(6).naam + " speelt tegen " + teams.get(7).naam + ".");
         System.out.println();
+
+
     }
 
+    private static void Ronde1Spelen(List<VoetbalTeam> teams){
 
+    }
 }
 
