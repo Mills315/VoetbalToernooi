@@ -9,8 +9,16 @@ public class Main {
         List<VoetbalTeam> teams = getTeams();
         printTeams(teams);
 
-    }
+        // maak een methode om rondes te simuleren. List van A -
+        // List van A - H randomizen en dan index 0 -1 , 2 - 3, ..?
+        // variabele fitheid toevoegen? dat is dan de 'wedstrijdspeelsterkte'
+        // zo kan een amateurteam van een proteam winnen. maar niet vaak.
+        // sterkte kan ook naar een percentage scoren omgezet worden.. bijv scoren = 50% betekent dat ze 50% kans hebben om 1 goal te scoren, 50%*50% voor 2 goals, et cetera
 
+
+        
+
+    }
 
     private static List<VoetbalTeam> getTeams() {
         List<VoetbalTeam> teams = new ArrayList<>();
