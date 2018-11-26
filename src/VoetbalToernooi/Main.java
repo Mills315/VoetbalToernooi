@@ -137,7 +137,7 @@ public class Main {
      *
      * @param winnaarsRonde1
      */
-    
+
     private static void Ronde2Shuffle(List<VoetbalTeam> winnaarsRonde1) {
         Collections.shuffle(winnaarsRonde1);
         System.out.println("In ronde 2 spelen de volgende teams tegen elkaar:");
@@ -280,5 +280,6 @@ public class Main {
         System.out.println();
     }
 }
+
 
 
