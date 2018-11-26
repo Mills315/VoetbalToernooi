@@ -5,7 +5,7 @@ import java.util.Random;
 public class ProTeam extends VoetbalTeam {
 
     protected ProTeam(String naam, String sponsor, char deelnemer) {
-        super(naam, sponsor);
+        super(naam, sponsor, "");
         Random willekeur = new Random();
         int n = willekeur.nextInt(50) + 50;
         this.speelsterkte = n;

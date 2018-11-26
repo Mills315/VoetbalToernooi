@@ -1,6 +1,6 @@
 package VoetbalToernooi;
 
-public class VoetbalTeam {
+abstract class VoetbalTeam {
 
     protected String naam;
     protected String sponsor;
@@ -9,9 +9,10 @@ public class VoetbalTeam {
     protected char deelnemer;
     protected int fitheid;
 
-    protected VoetbalTeam(String naam, String sponsor) {
+    protected VoetbalTeam(String naam, String sponsor, String mascotte) {
         this.naam = naam;
         this.sponsor = sponsor;
+        this.mascotte = mascotte;
         int fitheid = 0;
     }
 

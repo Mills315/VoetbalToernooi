@@ -5,12 +5,13 @@ import java.util.Random;
 public class AmateurTeam extends VoetbalTeam {
 
     protected AmateurTeam(String naam, String mascotte, char deelnemer) {
-        super(naam, mascotte);
+        super(naam, "", mascotte);
         Random willekeur = new Random();
         int n = willekeur.nextInt(40) + 5;
         this.speelsterkte = n;
         this.deelnemer = deelnemer;
         int fitheid = 0;
+        String sponsor = "";
     }
 
     public String getNaam() {

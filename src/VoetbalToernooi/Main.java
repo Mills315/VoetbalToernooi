@@ -14,6 +14,10 @@ public class Main {
     // sterkte kan ook naar een percentage scoren omgezet worden.. bijv scoren = 50% betekent dat ze 50% kans hebben om 1 goal te scoren, 50%*50% voor 2 goals, et cetera
     // maak een 10 sec delay. Tussen elke ronde doen, anders is het toernooi binnen no time over ... ;p
 
+    static List<VoetbalTeam> winnaarsRonde1 = new ArrayList<>();
+    static List<VoetbalTeam> winnaarsRonde2 = new ArrayList<>();
+    static List<VoetbalTeam> winnaar = new ArrayList<>();
+
 
     public static void main(String[] args) {
 
@@ -88,16 +92,10 @@ public class Main {
         Collections.shuffle(teams);
         System.out.println("In ronde 1 spelen de volgende teams tegen elkaar:");
         System.out.println();
-        System.out.print(teams.get(0).naam + " speelt tegen " + teams.get(1).naam + ".");
-        System.out.println();
-        System.out.print(teams.get(2).naam + " speelt tegen " + teams.get(3).naam + ".");
-        System.out.println();
-        System.out.print(teams.get(4).naam + " speelt tegen " + teams.get(5).naam + ".");
-        System.out.println();
-        System.out.print(teams.get(6).naam + " speelt tegen " + teams.get(7).naam + ".");
-        System.out.println();
-
-
+        tegen(teams.get(0), teams.get(1));
+        tegen(teams.get(2), teams.get(3));
+        tegen(teams.get(4), teams.get(5));
+        tegen(teams.get(6), teams.get(7));
     }
 
     // maak een fitheid generator. fitheid wordt een random, niet toegevoegd, moet in latere rondes weer een 'random random' zijn. pro teams hebben minder aan fitheid dan kroegteams.
@@ -124,40 +122,22 @@ public class Main {
     // bedenk wat voor gelijkspel!
 
     private static List<VoetbalTeam> Ronde1Spelen(List<VoetbalTeam> teams) {
-        List<VoetbalTeam> winnaarsRonde1 = new ArrayList<>();
-        if (teams.get(0).speelsterkte + teams.get(0).fitheid > teams.get(1).speelsterkte + teams.get(1).fitheid) {
-            winnaarsRonde1.add(teams.get(0));
-            System.out.println(winnaarsRonde1.get(0).naam + " wint!");
-        } else {
-            winnaarsRonde1.add(teams.get(1));
-            System.out.println(winnaarsRonde1.get(0).naam + " wint!");
-        }
-        if (teams.get(2).speelsterkte + teams.get(2).fitheid > teams.get(3).speelsterkte + teams.get(3).fitheid) {
-            winnaarsRonde1.add(teams.get(2));
-            System.out.println(winnaarsRonde1.get(1).naam + " wint!");
-        } else {
-            winnaarsRonde1.add(teams.get(3));
-            System.out.println(winnaarsRonde1.get(1).naam + " wint!");
-        }
-        if (teams.get(4).speelsterkte + teams.get(4).fitheid > teams.get(5).speelsterkte + teams.get(5).fitheid) {
-            winnaarsRonde1.add(teams.get(4));
-            System.out.println(winnaarsRonde1.get(2).naam + " wint!");
-        } else {
-            winnaarsRonde1.add(teams.get(5));
-            System.out.println(winnaarsRonde1.get(2).naam + " wint!");
-        }
-        if (teams.get(6).speelsterkte + teams.get(6).fitheid > teams.get(7).speelsterkte + teams.get(7).fitheid) {
-            winnaarsRonde1.add(teams.get(6));
-            System.out.println(winnaarsRonde1.get(3).naam + " wint!");
-        } else {
-            winnaarsRonde1.add(teams.get(7));
-            System.out.println(winnaarsRonde1.get(3).naam + " wint!");
-        }
+
+        wedstrijd(teams.get(0), teams.get(1), winnaarsRonde1);
+        wedstrijd(teams.get(2), teams.get(3), winnaarsRonde1);
+        wedstrijd(teams.get(4), teams.get(5), winnaarsRonde1);
+        wedstrijd(teams.get(6), teams.get(7), winnaarsRonde1);
+
         return winnaarsRonde1;
     }
 
     // ronde twee starten met lijst van winnaars. weer shufflen? waarom niet. nieuwe random fitheid, om het spannend te houden. speelsterkte blijft wel hetzelfde.
 
+    /**
+     *
+     * @param winnaarsRonde1
+     */
+    
     private static void Ronde2Shuffle(List<VoetbalTeam> winnaarsRonde1) {
         Collections.shuffle(winnaarsRonde1);
         System.out.println("In ronde 2 spelen de volgende teams tegen elkaar:");
@@ -184,21 +164,10 @@ public class Main {
     }
 
     private static List<VoetbalTeam> Ronde2Spelen(List<VoetbalTeam> winnaarsRonde1) {
-        List<VoetbalTeam> winnaarsRonde2 = new ArrayList<>();
-        if (winnaarsRonde1.get(0).speelsterkte + winnaarsRonde1.get(0).fitheid > winnaarsRonde1.get(1).speelsterkte + winnaarsRonde1.get(1).fitheid) {
-            winnaarsRonde2.add(winnaarsRonde1.get(0));
-            System.out.println(winnaarsRonde2.get(0).naam + " wint!");
-        } else {
-            winnaarsRonde2.add(winnaarsRonde1.get(1));
-            System.out.println(winnaarsRonde2.get(0).naam + " wint!");
-        }
-        if (winnaarsRonde1.get(2).speelsterkte + winnaarsRonde1.get(2).fitheid > winnaarsRonde1.get(3).speelsterkte + winnaarsRonde1.get(3).fitheid) {
-            winnaarsRonde2.add(winnaarsRonde1.get(2));
-            System.out.println(winnaarsRonde2.get(1).naam + " wint!");
-        } else {
-            winnaarsRonde2.add(winnaarsRonde1.get(3));
-            System.out.println(winnaarsRonde2.get(1).naam + " wint!");
-        }
+
+        wedstrijd(winnaarsRonde1.get(0), winnaarsRonde1.get(1), winnaarsRonde2);
+        wedstrijd(winnaarsRonde1.get(2), winnaarsRonde1.get(3), winnaarsRonde2);
+
         return winnaarsRonde2;
     }
 
@@ -225,7 +194,7 @@ public class Main {
     }
 
     private static List<VoetbalTeam> FinaleSpelen(List<VoetbalTeam> winnaarsRonde2) {
-        List<VoetbalTeam> winnaar = new ArrayList<>();
+
         if (winnaarsRonde2.get(0).speelsterkte + winnaarsRonde2.get(0).fitheid > winnaarsRonde2.get(1).speelsterkte + winnaarsRonde2.get(1).fitheid) {
             winnaar.add(winnaarsRonde2.get(0));
             System.out.println(winnaar.get(0).naam + " wint de FINALE!!!!");
@@ -235,7 +204,6 @@ public class Main {
         }
         return winnaar;
     }
-
 
     private static void Nabeschouwing(List<VoetbalTeam> winnaar) {
         if (winnaar.get(0) instanceof ProTeam) {
@@ -253,6 +221,64 @@ public class Main {
         }
     }
 
+    private static void wedstrijd(VoetbalTeam team1, VoetbalTeam team2, List<VoetbalTeam> winnaarsRonde) {
+        while (team1.speelsterkte + team1.fitheid == team2.speelsterkte + team2.fitheid) {
+            pause();
+            System.out.println("Penalties!! " + team1 + " en " + team2 + " doen een shootout!");
+            penalties(team1, team2);
+        }
+        if (team1.speelsterkte + team1.fitheid > team2.speelsterkte + team2.fitheid) {
+            winnaarsRonde.add(team1);
+            System.out.println(team1.naam + " wint!");
+        } else {
+            winnaarsRonde.add(team2);
+            System.out.println(team2.naam + " wint!");
+        }
+    }
 
+    private static int penalties(VoetbalTeam team1, VoetbalTeam team2) {
+        int count1 = 0;
+        int count2 = 0;
+        for (int i = 0; i < 6; i++) {
+            if (Math.random() > 0.75) {
+                count1++;
+            }
+        }
+        System.out.println("" + team1 + " scoort " + count1 + " keer!!");
+        for (int i = 0; i < 6; i++) {
+            if (Math.random() > 0.75) {
+                count2++;
+            }
+        }
+        System.out.println("" + team2 + " scoort " + count2 + " keer!!");
+        while (count1 == count2) {
+
+            if (Math.random() > 0.75) {
+                count1++;
+            }
+
+            if (Math.random() > 0.75) {
+                count2++;
+            }
+            if (count1 == count2) {
+                System.out.println("Ze scoren beide, spannend!! Nog een penalty!");
+            }
+        }
+        if (count1 > count2) {
+            team1.setFitheid(1000);
+            System.out.println("" + team1 + "wint!");
+            return team1.fitheid;
+        } else {
+            team2.setFitheid(1000);
+            System.out.println("" + team2 + "wint!");
+            return team2.fitheid;
+        }
+    }
+
+    private static void tegen(VoetbalTeam team1, VoetbalTeam team2) {
+        System.out.print(team1.naam + " speelt tegen " + team2.naam + ".");
+        System.out.println();
+    }
 }
+
 
